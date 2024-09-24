@@ -34,9 +34,9 @@ function CrawlSomeGood($url){
     $products = [];
     $xpath = new DOMXPath($dom);
     $elements = $xpath->query('//ol/li');
-
+    //dot specify we try find element within whole document
     foreach($elements as $element){
-        $productName = $xpath -> query('//h3/a',$element)->item(0)->nodeValue;
+        $productName = $xpath -> query('.//h3/a',$element)->item(0)->nodeValue;
         $productPrice = $xpath -> query('.//p[@class="price_color"]', $element)->item(0)->nodeValue;
         $discountPrice = $xpath -> query('.//p[@class="sale_price"]', $element);
         $discountPriceValue = $discountPrice->length>0 ? $discountPrice ->item(0)->nodeValue : null;
