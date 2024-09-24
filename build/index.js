@@ -9,7 +9,7 @@ async function fetchD() {
         const firstElelement = Object.keys(data);
         listOfGood = data[firstElelement];
 
-        //console.log('Good', listOfGood);
+        console.log('Good', listOfGood);
 
         interFace();
 
@@ -45,6 +45,7 @@ function interFace(books = listOfGood){
     }
     containerForInterface.appendChild(topDiv);
 }
+//function to find an item
 async function findItem(query) {
     const container = document.getElementById('leida');
 
