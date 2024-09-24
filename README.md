@@ -10,4 +10,12 @@
    ```bash
    npm i node-fetch@2
 
+4. Run php server:
+   ```bash
+   to run php -> cd build/ php -S localhost:3000
+
+5. Run node:
+   ```bash
+   npm run start
+
 <<!important it is better to use php version 8.0.30 with node 21>>

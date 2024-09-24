@@ -8,7 +8,7 @@ const app = express();
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'build')));
-
+//fetch php
 app.get('/get', async (req,res)=>{
     try{
         const response = await fetch('http://localhost:3000/api.php');
