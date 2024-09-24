@@ -15,6 +15,7 @@ function CrawlSomeGood($url){
 
     $html = curl_exec($ch);
 
+    //echo $html;
     if(curl_errno($ch)){
         echo json_encode(['error'=>'Curl error:'.curl_error($ch)]);
         curl_close($ch);
@@ -32,6 +33,7 @@ function CrawlSomeGood($url){
 
 
     $products = [];
+    $categories= [];
     $xpath = new DOMXPath($dom);
     $elements = $xpath->query('//ol/li');
     //dot specify we try find element within whole document
@@ -40,19 +42,31 @@ function CrawlSomeGood($url){
         $productPrice = $xpath -> query('.//p[@class="price_color"]', $element)->item(0)->nodeValue;
         $discountPrice = $xpath -> query('.//p[@class="sale_price"]', $element);
         $discountPriceValue = $discountPrice->length>0 ? $discountPrice ->item(0)->nodeValue : null;
-        $category = $xpath -> query('.//ul[@class="nav nav-list"]/li/a');
-        $categoryValue = $category->length>0 ? $category->item(0)->nodeValue : null;
         $bookImage = $xpath -> query('.//div[@class="image_container"]/a/img', $element)->item(0)->getAttribute('src');
 
         $products[]=[
             'name'=>trim($productName),
             'price'=>trim($productPrice),
             'discount_price'=> $discountPriceValue ? trim($discountPriceValue) : null,
-            'category'=> $categoryValue ? trim($categoryValue) : null,
             'image' => trim($bookImage)
         ];
     }
-    return $products;
+        $elelementsTwo = $xpath->query('//ul[@class="nav nav-list"]');
+        foreach($elelementsTwo as $elelementTwo){
+            $categoryElements = $xpath->query('.//ul/li/a', $elelementTwo);
+
+            foreach($categoryElements as $categoryElement){
+                $categories[]=[
+                    'category'=>trim($categoryElement->textContent),
+                    'link'=>trim($categoryElement->getAttribute('href'))
+                ];
+            }
+        }
+    return [
+        'products'=>$products,
+        'categories'=>$categories
+    ];
+
 }
 if($_SERVER["REQUEST_METHOD"]==='GET'){
     $urls = file('urls.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
