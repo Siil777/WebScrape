@@ -40,14 +40,16 @@ function CrawlSomeGood($url){
         $productPrice = $xpath -> query('.//p[@class="price_color"]', $element)->item(0)->nodeValue;
         $discountPrice = $xpath -> query('.//p[@class="sale_price"]', $element);
         $discountPriceValue = $discountPrice->length>0 ? $discountPrice ->item(0)->nodeValue : null;
-        $category = $xpath -> query('//div[@class="side_cotegories"]');
+        $category = $xpath -> query('.//ul[@class="nav nav-list"]/li/a');
         $categoryValue = $category->length>0 ? $category->item(0)->nodeValue : null;
+        $bookImage = $xpath -> query('.//div[@class="image_container"]/a/img', $element)->item(0)->getAttribute('src');
 
         $products[]=[
             'name'=>trim($productName),
             'price'=>trim($productPrice),
             'discount_price'=> $discountPriceValue ? trim($discountPriceValue) : null,
-            'category'=> $categoryValue ? trim($categoryValue) : null
+            'category'=> $categoryValue ? trim($categoryValue) : null,
+            'image' => trim($bookImage)
         ];
     }
     return $products;

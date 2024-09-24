@@ -1,0 +1,18 @@
+.books-stricture {
+    display: flex;
+    flex-wrap: wrap;
+}
+.books-stricture div {
+  flex: 0 0 25%;
+  box-sizing: border-box;
+}
+.custom-wrap{
+    flex-wrap: wrap;
+}
+.search {
+    margin-top: 40px;
+}
+.custom-btn {
+    margin-top: 10px;
+
+}
