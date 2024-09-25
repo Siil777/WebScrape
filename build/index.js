@@ -16,8 +16,11 @@ async function fetchD() {
         console.log('Good', listOfGood);
 
         interFace();
+        //avarage price of book on index page
         avaragePrice();
+        //categories of book and number of elements in each category
         UiForCategories();
+        popular();
         console.log(data);
 
     }catch(e){
@@ -139,4 +142,54 @@ function avaragePrice(){
     }else{
         console.log('this is not an array');
     }
+}
+//function the most popular categories of books
+function popular(categories=listOfGood.categories){
+    let maxBook = Math.max(...categories.map(category=>category.book_count));
+    const mostPopularCategories = categories.filter(category=>category.book_count===maxBook);
+   // let modalId = categories.map((category, index)=>`modal-${index+1}`);
+    //console.log('for modals', modalId);
+    categories.forEach((cat)=>{
+        console.log(`img urls ${cat.image}`);
+    });
+    const containerForChartPopulatBooks = document.getElementById('char-categories');
+    const modals = document.getElementById('Modals');
+    //modals.innerHTML = '';
+    containerForChartPopulatBooks.classList.add('year-stats');
+    mostPopularCategories.forEach((category,index)=>{
+        const modalId = `modal-${index+1}`;
+        const MonthGroup = document.createElement('div');
+        MonthGroup.classList.add('month-group');
+        const bar = document.createElement('div');
+        bar.classList.add('bar','h-100');
+        bar.textContent = `${category.book_count}`;
+        const p = document.createElement('p');
+        p.classList.add('month');
+        p.textContent = `${category.category}`;
+        p.setAttribute('data-modal-id', modalId);
+        p.addEventListener('click', ()=>{
+            console.log('element has been clicked!', modalId);
+            const divModal = document.createElement('div');
+            divModal.classList.add('modal');
+            const imgDiv = document.createElement('img');
+            imgDiv.src = category.image.startsWith('http') ? category.image : `http://localhost:777${category.image}`;
+            divModal.id = modalId;
+            divModal.innerHTML = `
+                <div>
+                    <h2>${category.category}</h2>
+                    <button class="close-modal">Close</button>
+                </div>
+            `;
+            divModal.appendChild(imgDiv);
+            modals.appendChild(divModal);
+            const closeButton = divModal.querySelector('.close-modal');
+            closeButton.addEventListener('click', () => {
+                modals.removeChild(divModal);
+            });
+        });
+        MonthGroup.appendChild(bar);
+        MonthGroup.appendChild(p);
+        containerForChartPopulatBooks.appendChild(MonthGroup);
+        console.log(`The most popular categories ${category.category} with ${category.book_count}`);
+    });
 }

@@ -56,7 +56,7 @@ function CrawlSomeGood($url){
         $elelementsTwo = $xpath->query('//ul[@class="nav nav-list"]');
         foreach($elelementsTwo as $elelementTwo){
             $categoryElements = $xpath->query('.//ul/li/a', $elelementTwo);
-
+            $bookImage = $xpath -> query('.//div[@class="image_container"]/a/img', $element)->item(0)->getAttribute('src');
             foreach($categoryElements as $categoryElement){
                 $categoryName = trim($categoryElement->textContent);
                 $categoryLink = trim($categoryElement->getAttribute('href'));
@@ -68,7 +68,8 @@ function CrawlSomeGood($url){
                 $categories[]=[
                     'category'=>$categoryName,
                     'link'=>$categoryLink,
-                    'book_count'=> $bookCount
+                    'book_count'=> $bookCount,
+                    'image' => trim($bookImage)
                 ];
             }
         }
