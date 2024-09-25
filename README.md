@@ -22,4 +22,8 @@
    ```bash
    npm run start
 
+7. Page with built data interface will be:
+   ```bash
+   http://localhost:777/index.html
+
 <<!important it is better to use php version 8.0.30 with node 21>>
