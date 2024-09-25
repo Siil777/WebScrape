@@ -9,20 +9,23 @@ async function fetchD() {
         const firstElelement = Object.keys(data);
         listOfGood = data[firstElelement];
 
+
         let products = listOfGood.products;
+        let categories = listOfGood.categories;
 
         console.log('Good', listOfGood);
 
         interFace();
         avaragePrice();
-        //console.log(data);
+        UiForCategories();
+        console.log(data);
 
     }catch(e){
         console.error(e);
     }
 }
 fetchD();
-
+//index page
 function interFace(books = listOfGood.products){
     const containerForInterface = document.getElementById('goods');
     containerForInterface.innerHTML = '';
@@ -47,7 +50,45 @@ function interFace(books = listOfGood.products){
     }
     containerForInterface.appendChild(topDiv);
 }
-//function to find an item
+//Categories
+function UiForCategories(categories=listOfGood.categories){
+    const categoriesUi = document.getElementById('categories');
+    const btnHideShow = document.getElementById('btnHideShow');
+    categoriesUi.style.display = 'none';
+    categoriesUi.innerHTML = '';
+
+    btnHideShow.addEventListener('click', (event)=>{
+        const pi = event.target;
+        console.log('button clicked', pi);
+            if(categoriesUi.style.display==='none' || categoriesUi.style.display===''){
+                categoriesUi.style.display='block';
+                categoriesUi.classList.remove('hide');
+                categoriesUi.classList.add('show');
+            }else{
+                categoriesUi.style.display='none';
+                categoriesUi.classList.remove('show');
+                categoriesUi.classList.add('hide');
+            }
+    });
+
+    const CatDiv = document.createElement('div');
+    const wrapCountAndCtegory = document.createElement('div');
+    if(Array.isArray(categories)){
+        categories.forEach((category)=>{
+            const categoryDiv = document.createElement('div');
+            categoryDiv.innerHTML = `Category name: ${category.category}`;
+            const categoryBooksNum = document.createElement('div');
+            categoryBooksNum.innerHTML = `Count of books in the ${category.category} category: ${category.book_count}`;
+            wrapCountAndCtegory.appendChild(categoryDiv);
+            wrapCountAndCtegory.appendChild(categoryBooksNum);
+            CatDiv.appendChild(wrapCountAndCtegory);
+        });
+    }else{
+        console.log('This is not fucking array');
+    }
+    categoriesUi.appendChild(CatDiv);
+}
+//function to find an item on index
 async function findItem(query) {
     const container = document.getElementById('leida');
 

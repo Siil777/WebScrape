@@ -34,6 +34,8 @@ function CrawlSomeGood($url){
 
     $products = [];
     $categories= [];
+    $categoryBookCount = [];
+    
     $xpath = new DOMXPath($dom);
     $elements = $xpath->query('//ol/li');
     //dot specify we try find element within whole document
@@ -56,9 +58,17 @@ function CrawlSomeGood($url){
             $categoryElements = $xpath->query('.//ul/li/a', $elelementTwo);
 
             foreach($categoryElements as $categoryElement){
+                $categoryName = trim($categoryElement->textContent);
+                $categoryLink = trim($categoryElement->getAttribute('href'));
+                if(strpos($categoryLink, 'http')!==0){
+                    $baseUrl = 'http://books.toscrape.com/';
+                    $categoryLink = $baseUrl . ltrim($categoryLink, '/');
+                }
+                $bookCount = countBooksInCategory($categoryLink);
                 $categories[]=[
-                    'category'=>trim($categoryElement->textContent),
-                    'link'=>trim($categoryElement->getAttribute('href'))
+                    'category'=>$categoryName,
+                    'link'=>$categoryLink,
+                    'book_count'=> $bookCount
                 ];
             }
         }
@@ -66,6 +76,32 @@ function CrawlSomeGood($url){
         'products'=>$products,
         'categories'=>$categories
     ];
+
+}
+function countBooksInCategory($categoryUrl){
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, $categoryUrl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebkit/537.36 (KHTML like Gecko) Chrome/91.0.4472.124 Safari/537.36');
+
+    $html=curl_exec($ch);
+
+    if(curl_errno($ch)){
+        curl_close($ch);
+        return 0;
+    }
+    curl_close($ch);
+    if($html===null){
+        return 0;
+    }
+    $dom=new DomDocument();
+    @$dom->loadHTML($html);
+    $xpath=new DOMXPath($dom);
+
+    $bookElements = $xpath->query('//ol/li');
+    return $bookElements->length;
+
 
 }
 if($_SERVER["REQUEST_METHOD"]==='GET'){
