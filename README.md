@@ -10,7 +10,7 @@
    ```bash
    npm i node-fetch@2
 
-4. Run code to make directory where will be saved collected data:
+4. Run code to make directory where will be saved collected data. Reduce time of loading page, as long as we have many categories  and items in the categories, do not parse website each time:
    ```bash
    to create directory -> cd build/ mkdir cache 
 
