@@ -1,6 +1,6 @@
 let listOfGood = [];
 
-//get json for UI
+//Get json for UI
 async function fetchD() {
     try{
         const response = await fetch(`http://localhost:777/get`);
