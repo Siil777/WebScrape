@@ -56,7 +56,7 @@ function UiForCategories(categories=listOfGood.categories){
     const btnHideShow = document.getElementById('btnHideShow');
     categoriesUi.style.display = 'none';
     categoriesUi.innerHTML = '';
-
+    //hide show btn
     btnHideShow.addEventListener('click', (event)=>{
         const pi = event.target;
         console.log('button clicked', pi);

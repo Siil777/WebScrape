@@ -17,5 +17,9 @@
 5. Run node:
    ```bash
    npm run start
+   
+6. Run code to make directory where will be saved collected data:
+   ```bash
+    mkdir cache 
 
 <<!important it is better to use php version 8.0.30 with node 21>>
