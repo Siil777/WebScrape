@@ -1,6 +1,6 @@
 let listOfGood = [];
 
-
+//get json for UI
 async function fetchD() {
     try{
         const response = await fetch(`http://localhost:777/get`);
@@ -9,10 +9,12 @@ async function fetchD() {
         const firstElelement = Object.keys(data);
         listOfGood = data[firstElelement];
 
+        let products = listOfGood.products;
+
         console.log('Good', listOfGood);
 
         interFace();
-
+        avaragePrice();
         //console.log(data);
 
     }catch(e){
@@ -21,7 +23,7 @@ async function fetchD() {
 }
 fetchD();
 
-function interFace(books = listOfGood){
+function interFace(books = listOfGood.products){
     const containerForInterface = document.getElementById('goods');
     containerForInterface.innerHTML = '';
     const wrapBooksForStricture = document.createElement('div');
@@ -53,7 +55,7 @@ async function findItem(query) {
         const response = await fetch(`http://localhost:777/get?search=${encodeURIComponent(query)}`);
         const data = await response.json();
         const ferstElement = Object.keys(data)[0];
-        const getElement = data[ferstElement];
+        const getElement = listOfGood.products;
 
 
         const filterBooks = getElement.filter(book=>book.name.toLowerCase().includes(query.toLowerCase()))
@@ -71,7 +73,29 @@ async function findItem(query) {
         console.error(e);
     }
 }
+
 document.getElementById('Tofind').addEventListener('click', async()=>{
     const query = document.getElementById('search').value;
     await findItem(query);
 });
+
+//func to find avarage price of book on index page
+function avaragePrice(){
+    const getElement = listOfGood.products;
+    const containerForPrice = document.getElementById('chart');
+    containerForPrice.textContent = 'avarage price for book on index page';
+    if(Array.isArray(getElement)){
+        const middle = document.createElement('div');
+        const avaragePrice = getElement.reduce((sum,book)=>{
+            const price = parseFloat(book.price.replace('£', ''))
+            return sum + price;
+        }, 0) / getElement.length;
+        middle.classList.add('pie');
+        middle.style = '--p:20';
+        middle.innerHTML = `<div>${avaragePrice.toFixed(2)}£</div>`;
+        containerForPrice.appendChild(middle);
+        console.log('avarage price for book on index page is:', avaragePrice.toFixed(2));
+    }else{
+        console.log('this is not an array');
+    }
+}
