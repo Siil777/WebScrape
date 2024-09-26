@@ -2,31 +2,50 @@ let listOfGood = [];
 
 //Get json for UI
 async function fetchD() {
-    try{
-        const response = await fetch(`http://localhost:777/get`);
-        const data = await response.json();
-        console.log(data);
-        const firstElelement = Object.keys(data);
-        listOfGood = data[firstElelement];
+    const MaxRetries = 5;
+    let retries = 0;
 
+    while (retries < MaxRetries) {
+        try {
+            const response = await fetch(`http://localhost:777/get`);
+            
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
 
-        let products = listOfGood.products;
-        let categories = listOfGood.categories;
+            const data = await response.json();
+            console.log(data);
 
-        console.log('Good', listOfGood);
+            const firstElement = Object.keys(data)[0]; 
+            listOfGood = data[firstElement];
 
-        interFace();
-        //avarage price of book on index page
-        avaragePrice();
-        //categories of book and number of elements in each category
-        UiForCategories();
-        popular();
-        console.log(data);
+            let products = listOfGood.products;
+            let categories = listOfGood.categories;
 
-    }catch(e){
-        console.error(e);
+            console.log('Good', listOfGood);
+
+            interFace();
+            avaragePrice();   // Function to calculate average price
+            UiForCategories(); // Function to handle categories display
+            popular();         // Function to display popular books
+
+            console.log(data);
+            return;
+
+        } catch (e) {
+            retries++;
+            console.log(`Retrying fetch... (${retries})`);
+
+            if (retries >= MaxRetries) {
+                console.error('Max retries reached. Failed to fetch data.');
+            }
+            //increased time of promise because when we run the project the fisrt time it takes time before
+            //backend script collect all data and cache it.
+            await new Promise(resolve => setTimeout(resolve, 10000));
+        }
     }
 }
+
 fetchD();
 //index page
 function interFace(books = listOfGood.products){
