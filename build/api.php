@@ -126,19 +126,16 @@ function countBooksInCategory($categoryUrl) {
         ];
     }
 
-    // Cache the count and books
     setCache($categoryUrl, $bookCount, $books);
     return $bookCount;
 }
 
 function getBooksInCategory($categoryLink) {
-    // Reuse the countBooksInCategory to get cached data
     $cachedData = getCache($categoryLink);
     if ($cachedData !== false) {
-        return $cachedData['books']; // Return cached books
+        return $cachedData['books']; 
     }
 
-    // Fetching the books was already done in countBooksInCategory, so you can return an empty array if there's no cache
     return [];
 }
 
