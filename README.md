@@ -1,29 +1,16 @@
-1. Run the following command to install Express:
+1. Run to setup all extensions need:
    ```bash
-   npm i express
+   npm run setup
 
-2. Run the following command to install Nodemon:
-   ```bash
-   npm i nodemon
-
-3. Run the following command to install node-fetch:
-   ```bash
-   npm i node-fetch@2
-
-4. Run code to make directory where will be saved collected data. Reduce time of loading page, as long as we have many categories  and items in the categories, do not parse website each time:
-   ```bash
-   to create directory -> cd build/ mkdir cache 
-
-5. Run it to unite both servers in one requiest:
-   ```bash
-   npm install concurrently --save-dev
-
-
-6. Run node:
+2. Run to set project:
    ```bash
    npm run start
 
-7. Page with built data interface will be:
+7. page with json format respons:
+   ```bash
+   http://localhost:3000/api.php
+
+7. page interface build based on json data:
    ```bash
    http://localhost:777/index.html
 
