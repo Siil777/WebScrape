@@ -2,7 +2,7 @@ let listOfGood = [];
 
 //Get json for UI
 async function fetchD() {
-    const MaxRetries = 5;
+    const MaxRetries = 17;
     let retries = 0;
 
     while (retries < MaxRetries) {
@@ -16,11 +16,15 @@ async function fetchD() {
             const data = await response.json();
             console.log(data);
 
-            const firstElement = Object.keys(data)[0]; 
+            const firstElement = Object.keys(data); 
             listOfGood = data[firstElement];
 
             let products = listOfGood.products;
             let categories = listOfGood.categories;
+            console.log('CATEGORIESW', categories);
+            categories.forEach((cat)=>{
+                console.log(`img urlsone: ${cat.image}`);
+            }) 
 
             console.log('Good', listOfGood);
 
@@ -35,6 +39,9 @@ async function fetchD() {
         } catch (e) {
             retries++;
             console.log(`Retrying fetch... (${retries})`);
+            const fetching = document.getElementById('fetc-container');
+            fetching.innerHTML = '';
+            fetching.textContent = `Retrying fetch... (${retries})`;
 
             if (retries >= MaxRetries) {
                 console.error('Max retries reached. Failed to fetch data.');
@@ -75,6 +82,7 @@ function interFace(books = listOfGood.products){
 //Categories
 function UiForCategories(categories=listOfGood.categories){
     const categoriesUi = document.getElementById('categories');
+    categoriesUi.classList.add('custom-mt');
     const btnHideShow = document.getElementById('btnHideShow');
     categoriesUi.style.display = 'none';
     categoriesUi.innerHTML = '';
@@ -99,8 +107,10 @@ function UiForCategories(categories=listOfGood.categories){
         categories.forEach((category)=>{
             const categoryDiv = document.createElement('div');
             categoryDiv.innerHTML = `Category name: ${category.category}`;
+            const bookCount = category.book_count.book_count;
+            console.log('Book Count:', bookCount, 'Type:', typeof bookCount);
             const categoryBooksNum = document.createElement('div');
-            categoryBooksNum.innerHTML = `Count of books in the ${category.category} category: ${category.book_count}`;
+            categoryBooksNum.innerHTML = `Count of books in the ${category.category} category: ${bookCount}`;
             wrapCountAndCtegory.appendChild(categoryDiv);
             wrapCountAndCtegory.appendChild(categoryBooksNum);
             CatDiv.appendChild(wrapCountAndCtegory);
@@ -126,6 +136,7 @@ async function findItem(query) {
             container.innerHTML = '';
             filterBooks.forEach((book)=>{
                 const div = document.createElement('div');
+                div.classList.add('custom-mt');
                 div.textContent = `Name: ${book.name}: Price: ${book.price}`;
                 container.appendChild(div);
             });
@@ -164,12 +175,12 @@ function avaragePrice(){
 }
 //function the most popular categories of books
 function popular(categories=listOfGood.categories){
-    let maxBook = Math.max(...categories.map(category=>category.book_count));
-    const mostPopularCategories = categories.filter(category=>category.book_count===maxBook);
+    let maxBook = Math.max(...categories.map(category=>category.book_count.book_count));
+    const mostPopularCategories = categories.filter(category=>category.book_count.book_count===maxBook);
    // let modalId = categories.map((category, index)=>`modal-${index+1}`);
     //console.log('for modals', modalId);
     categories.forEach((cat)=>{
-        console.log(`img urls ${cat.image}`);
+        console.log(`BOOKS IN CATEGORY ${cat.books}`);
     });
     const containerForChartPopulatBooks = document.getElementById('char-categories');
     const modals = document.getElementById('Modals');
@@ -181,27 +192,39 @@ function popular(categories=listOfGood.categories){
         MonthGroup.classList.add('month-group');
         const bar = document.createElement('div');
         bar.classList.add('bar','h-100');
-        bar.textContent = `${category.book_count}`;
+        bar.textContent = `${category.book_count.book_count}`;
         const p = document.createElement('p');
         p.classList.add('month');
         p.textContent = `${category.category}`;
         p.setAttribute('data-modal-id', modalId);
         p.addEventListener('click', ()=>{
             console.log('element has been clicked!', modalId);
+            const excistingModal = document.getElementById(modalId);
+            if(excistingModal){
+                modals.removeChild(excistingModal);
+            }
             const divModal = document.createElement('div');
             divModal.classList.add('modal');
-            const imgDiv = document.createElement('img');
-            imgDiv.src = category.image.startsWith('http') ? category.image : `http://localhost:777${category.image}`;
-            divModal.id = modalId;
-            divModal.innerHTML = `
+/*             const imgDiv = document.createElement('img');
+            console.log(`Type of image: ${typeof category.image}`, category.image);
+            imgDiv.src = category.image.startsWith('http')
+                ? category.image
+                : `http://books.toscrape.com/${category.image}`;
+                console.log('path to img', `${category.category}  ${imgDiv.src}`); */
+                const BooksNames = category.books.map(book=>`<li>${book.title}</li>`).join('');
+                divModal.id = modalId;
+                divModal.innerHTML = `<div>
+                <h2 class='custom-m-auto'>${category.category}</h2>
                 <div>
-                    <h2>${category.category}</h2>
-                    <button class="close-modal">Close</button>
+                <ul>${BooksNames}</ul>
                 </div>
-            `;
-            divModal.appendChild(imgDiv);
+                <div class='custom-flex'>
+                    <button class='button-23'>Close</button>
+                </div>
+                </div>`;
+            //divModal.appendChild(imgDiv);
             modals.appendChild(divModal);
-            const closeButton = divModal.querySelector('.close-modal');
+            const closeButton = divModal.querySelector('.button-23');
             closeButton.addEventListener('click', () => {
                 modals.removeChild(divModal);
             });

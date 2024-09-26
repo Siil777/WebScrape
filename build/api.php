@@ -65,11 +65,13 @@ function CrawlSomeGood($url){
                     $categoryLink = $baseUrl . ltrim($categoryLink, '/');
                 }
                 $bookCount = countBooksInCategory($categoryLink);
+                $booksInCategory = getBooksInCategory($categoryLink);
                 $categories[]=[
                     'category'=>$categoryName,
                     'link'=>$categoryLink,
                     'book_count'=> $bookCount,
-                    'image' => trim($bookImage)
+                    'image' => trim($bookImage),
+                    'books'=> $booksInCategory
                 ];
             }
         }
@@ -80,16 +82,16 @@ function CrawlSomeGood($url){
 
 }
 function countBooksInCategory($categoryUrl) {
-    $cachedCategories = getCache($categoryUrl);
-    if ($cachedCategories !== false) {
-        return $cachedCategories;
+    $cachedData = getCache($categoryUrl);
+    if ($cachedData !== false) {
+        return $cachedData; // Return cached data (both count and books)
     }
 
-
+    // Initialize cURL
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $categoryUrl);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebkit/537.36 (KHTML like Gecko) Chrome/91.0.4472.124 Safari/537.36');
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
 
     $html = curl_exec($ch);
     if (curl_errno($ch)) {
@@ -103,40 +105,64 @@ function countBooksInCategory($categoryUrl) {
         return 0; 
     }
 
-
+    // Process the HTML
     $dom = new DomDocument();
     @$dom->loadHTML($html);
     $xpath = new DOMXPath($dom);
     $bookElements = $xpath->query('//ol/li');
     $bookCount = $bookElements->length;
 
-    setCache($categoryUrl, $bookCount);
+    // Extract book details for caching
+    $books = [];
+    foreach ($bookElements as $bookElement) {
+        $titleElement = $xpath->query('.//h3/a', $bookElement);
+        $title = $titleElement->length > 0 ? trim($titleElement->item(0)->getAttribute('title')) : '';
+        $imageElement = $xpath->query('.//div[@class="image_container"]/a/img', $bookElement);
+        $imageUrl = $imageElement->length > 0 ? trim($imageElement->item(0)->getAttribute('src')) : '';
+
+        $books[] = [
+            'title' => $title,
+            'image' => $imageUrl
+        ];
+    }
+
+    // Cache the count and books
+    setCache($categoryUrl, $bookCount, $books);
     return $bookCount;
+}
+
+function getBooksInCategory($categoryLink) {
+    // Reuse the countBooksInCategory to get cached data
+    $cachedData = getCache($categoryLink);
+    if ($cachedData !== false) {
+        return $cachedData['books']; // Return cached books
+    }
+
+    // Fetching the books was already done in countBooksInCategory, so you can return an empty array if there's no cache
+    return [];
 }
 
 function getCache($categoryUrl) {
     $cacheFile = 'cache/' . md5($categoryUrl) . '.json';
-    //check time last time was proccesed.
     if (file_exists($cacheFile)) {
         $cacheTime = filemtime($cacheFile);
         if (time() - $cacheTime < 3600) { 
             $cacheData = file_get_contents($cacheFile);
-            return json_decode($cacheData, true)['book_count']; 
+            return json_decode($cacheData, true);
         }
     }
     return false;
 }
 
-// Set cache for book count
-function setCache($categoryUrl, $bookCount) {
+function setCache($categoryUrl, $bookCount, $booksInCategory) {
     $cacheFile = 'cache/' . md5($categoryUrl) . '.json';
     $dataToCache = [
         'book_count' => $bookCount,
+        'books' => $booksInCategory,
         'timestamp' => time()
     ];
     file_put_contents($cacheFile, json_encode($dataToCache)); 
 }
-
 if($_SERVER["REQUEST_METHOD"]==='GET'){
     $urls = file('urls.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $results = [];
