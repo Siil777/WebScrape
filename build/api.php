@@ -105,7 +105,6 @@ function countBooksInCategory($categoryUrl) {
         return 0; 
     }
 
-    // Process the HTML
     $dom = new DomDocument();
     @$dom->loadHTML($html);
     $xpath = new DOMXPath($dom);
