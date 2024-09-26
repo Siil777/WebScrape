@@ -14,9 +14,10 @@
    ```bash
    to create directory -> cd build/ mkdir cache 
 
-5. Run php server:
+5. Run it to unite both servers in one requiest:
    ```bash
-   to run php -> cd build/ php -S localhost:3000
+   npm install concurrently --save-dev
+
 
 6. Run node:
    ```bash

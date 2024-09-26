@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "setup": "npm i express nodemon node-fetch@2 concurrently && mkdir -p build/cache",
+    "start": "concurrently \"nodemon --watch . --ext js app.js\" \"php -S localhost:3000 -t ./build\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,5 +15,8 @@
     "express": "^4.21.0",
     "node-fetch": "^2.7.0",
     "nodemon": "^3.1.7"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
   }
 }
