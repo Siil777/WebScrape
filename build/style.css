@@ -103,14 +103,21 @@
   .custom-poition-pie{
     margin-left: 90px !important;
   }
+  .set-for-sm-modal {
+    display: flex;
+    justify-content: center;
+  }
+  .custom-class-for-modal-text {
+    position: absolute;
+    margin: 70px 0 0 30px;
+    color: var(--info);
+  }
   .modal-ms {
-    height: 295px;
+    height: 225px;
     width: 300px;
     background-color: var(--color-dark-l);
     z-index: 999;
     position: absolute;
-    top: 20%;
-    left: 15%;
 }
 }
 .custom-wrap-list-of-books-index {

@@ -160,6 +160,7 @@ function avaragePrice(){
     const containerForPrice = document.getElementById('chart');
     const btnDisplayChartOnSmallScreen = document.getElementById('show-avarage');
     const diVForSecondModalSmallScreens = document.createElement('div');
+    diVForSecondModalSmallScreens.classList.add('set-for-sm-modal');
     containerForPrice.textContent = 'avarage price for book on index page';
     if(Array.isArray(getElement)){
         const middle = document.createElement('div');
@@ -185,7 +186,11 @@ function avaragePrice(){
             //m.style = '--p:20';
             m.innerHTML = `<div class='custom-position-price'>${avaragePrice.toFixed(2)}£</div><div class='custom-flex-modal'>
             <button class='button-23'>Close</button>
-            </div>`;
+            </div>
+            <div class='custom-class-for-modal-text'>
+            <h5>Avarage price for book on index page</h5>
+            </div>
+            `;
             m.appendChild(pie);
             diVForSecondModalSmallScreens.appendChild(m);
 
