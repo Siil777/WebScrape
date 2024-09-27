@@ -7,46 +7,47 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
     <div id="fetc-container">
-
+        <!--display process of fetching data for ordinary user-->
     </div>
-    <div class="custom-container">
-        <div id="goods">
-            <!--books-->
+    <div id="goods">
+        <!--books-->
+    </div>
+    <div class="custom-ps-search">
+        <div>
+            <input class="search-index-page" type="search" id="search-index-page" placeholder="enter to search">
         </div>
         <div>
-            <div>
-                <input class="search" type="search" id="search" placeholder="enter to search">
-            </div>
-            <div>
-                <button class="button-4" id="Tofind" role="button">Click to find</button>
-            </div>
-            <div>
-                <div id="leida">
-                    <!--an item-->
-                </div>
+            <button class="button-4" id="Tofind" role="button">Click to find</button>
+        </div>
+        <div>
+            <div id="leida">
+                <!--an item-->
             </div>
         </div>
-        <div class="custom-block" id="chart">
-            <!--chart-->
-        </div>
+    </div>
+    <div class="custom-block-chart" id="chart">
+        <!--chart-->
+    </div>
+    <div class="custom-ps-search">
         <div>
             <button class="button-4" id="btnHideShow">Show categories</button>
         </div>
         <div class="categories hide show" id="categories">
             <!--Categories-->
         </div>
-        <div class="main-container">
-            <div id="char-categories">
-                <!--most popular categories, I calculated it based on amount of books in a category-->
-            </div>
-        </div>
-        <div id="Modals">
-            <!--modals for categories-->
+    </div>
+    <div class="main-container-chart-popular-books">
+        <div id="char-categories">
+            <!--most popular categories, I calculated it based on amount of books in a category-->
         </div>
     </div>
-
+    <div id="Modals">
+        <!--modals for categories-->
+    </div>
     <script src="index.js"></script>
 </body>
+
 </html>

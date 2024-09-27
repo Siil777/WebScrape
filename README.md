@@ -1,3 +1,5 @@
+n## Install
+
 1. Run to setup all extensions need:
    ```bash
    npm run setup
@@ -6,11 +8,11 @@
    ```bash
    npm run start
 
-7. page with json format respons:
+3. page with json format respons:
    ```bash
    http://localhost:3000/api.php
 
-7. page interface build based on json data:
+4. page interface built based on json data:
    ```bash
    http://localhost:777/index.html
 

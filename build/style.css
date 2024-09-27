@@ -1,53 +1,124 @@
 /*my styles*/
-.categories {
-    position: absolute;
+:root {
+  /*options*/
+  --color-primary: #F1CDB3;
+  --color-light-xl: #FFFFFF;
+  --color-light-l: #F6F6F6;
+  --color-primary-light: #FDDCC4;
+
+  --color-dark-s: #CDCDCD;
+  --color-dark-xl: #4C4C4C;
+  --color-dark-l: rgb(	84, 84, 84, 0.9);
+  --color-dark-3xl: #292929;
+  --color-dark-m: #B2B2B2;
+  --color-light-s:#FAFAFA; 
+
+  --gradient-background: radial-gradient(237.5% 111.8% at 0% 0%, rgb(91, 72, 58) 0%, rgb(38, 36, 37) 100%), #211f20;
+  --info: rgba(241, 205, 179, 1);
+  --additional-info: rgba(255, 255, 255, 1);
 }
-.custom-m-auto {
+.custom-container {
+  width: 1200px;
+  max-width: 100%;
+}
+
+.wrapper {
   position: relative;
-  left: 7%;
-}
-.custom-flex {
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
-  margin-right: 5%;
+  justify-content: center;
+  padding: 0 20px;
 }
-.books-stricture {
+
+.wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+  display: flex;
+  justify-content: center;
+  background: var(--color-dark-3xl);
+  background-size: cover;
+  z-index: -1;
+}
+/*List of books index*/
+.books-stricture-list-of-books-index {
     display: flex;
     flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
 }
-.books-stricture div {
+.books-stricture-list-of-books-index div {
   flex: 0 0 25%;
   box-sizing: border-box;
+  padding-left: 30px;
 }
-.custom-wrap{
-    flex-wrap: wrap;
+@media screen and (max-width: 775px){
+  .books-stricture-list-of-books-index div {
+    flex: 0 0 35%;
+    box-sizing: border-box;
+    padding-left: 30px;
+  }
 }
-.search {
-    margin-top: 40px;
+.custom-wrap-list-of-books-index {
+  text-align: left;
+  padding: 0;
 }
-/*find function*/
-.custom-mt {
+/*Search index page*/
+.search-index-page {
+    margin-top: 60px;
+}
+.custom-ps-search {
+  padding: 0 0 0 30px;
+}
+/*Categories index page*/
+.custom-mt-categories {
   margin-top: 10px;
 }
-.custom-block {
+.hide-categories-index-page {
+  display: none;
+}
+.show-categories-index-page {
+  display: block;
+}
+.categories {
+  position: absolute;
+}
+/*Chart*/
+.custom-block-chart {
     display: flex;
     justify-content: center;
 }
-.hide {
-    display: none;
+.main-container-chart-popular-books {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 100px;
 }
-.show {
-    display: block;
-}
+/*Modals*/
 .modal {
-    height: 575px;
+    height: 695px;
     width: 500px;
-    background-color: beige;
+    background-color: var(--color-dark-l);
     position: absolute;
     top: 50%;
     left: 30%;
     transition: translate(-50%, -20%);
 
+}
+.custom-font-modal {
+  font-size: 17px;
+}
+.custom-m-auto-modal {
+  position: relative;
+  left: 7%;
+}
+.custom-flex-modal {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5%;
 }
 /*Source of charts https://www.sliderrevolution.com/resources/css-charts/*/
 @property --p{
@@ -104,14 +175,6 @@
     from{--p:0}
   }
   /*css for chart source: https://codepen.io/jorgemoovein-the-bashful/pen/yLeLELw*/
-  .main-container {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 210px;
-}
-
-
-
 /* SCROLL BAR STYLE (ONLY WORKS IN CHROME) */
 
 .month-group {
@@ -126,7 +189,7 @@
     transform: scale(1.1);
 }
 .bar {
-	background-color: #abafc6;
+	background-color: var( --color-dark-m);
 	width: 20px;
 	border-radius: 5px;
 	margin-bottom: 10px;
@@ -163,41 +226,15 @@
 	height: 120px;
 }
 
-.circle {
-	stroke: #915db1;
-	fill: none;
-	stroke-width: 3;
-}
-
-.circle:nth-child(2) {
-	stroke: #e59f3c;
-}
-
-.circle:nth-child(3) {
-	stroke: #5397d6;
-}
-
-.circle:nth-child(4) {
-	stroke: #4cc790;
-}
-
 .graph-container p {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	font-size: 12px;
-	color: #fff;
 	text-align: center;
 }
 
-.info p {
-	margin-bottom: 10px;
-}
-
-.info span {
-	color: #fff;
-}
 .month {
     transform: rotate(260deg);
     margin: 0;
@@ -206,102 +243,42 @@
 .button-4 {
   margin-top: 10px;
   appearance: none;
-  background-color: #FAFBFC;
-  border: 1px solid rgba(27, 31, 35, 0.15);
+  background-color: var(--color-light-xl);
+  border: 1px solid var(--color-dark-3xl);
   border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
   box-sizing: border-box;
-  color: #24292E;
+  color: var(--color-dark-3xl);
   cursor: pointer;
   display: inline-block;
   font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 14px;
   font-weight: 500;
-  line-height: 20px;
   list-style: none;
   padding: 6px 16px;
   position: relative;
-  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  white-space: nowrap;
-  word-wrap: break-word;
 }
-
 .button-4:hover {
-  background-color: #F3F4F6;
-  text-decoration: none;
-  transition-duration: 0.1s;
+  background-color: var(--color-dark-m);
+  transition: background-color 3s ease;
 }
-
-.button-4:disabled {
-  background-color: #FAFBFC;
-  border-color: rgba(27, 31, 35, 0.15);
-  color: #959DA5;
-  cursor: default;
-}
-
-.button-4:active {
-  background-color: #EDEFF2;
-  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-  transition: none 0s;
-}
-
-.button-4:focus {
-  outline: 1px transparent;
-}
-
-.button-4:before {
-  display: none;
-}
-
-.button-4:-webkit-details-marker {
-  display: none;
-}
-
 /* CSS */
 .button-23 {
-  background-color: #FFFFFF;
-  border: 1px solid #222222;
+  background-color: var(--color-light-xl);
+  border: 1px solid var(--color-dark-xl);
   border-radius: 8px;
   box-sizing: border-box;
-  color: #222222;
+  color: var( --color-dark-3xl);
   cursor: pointer;
   display: inline-block;
   font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
   font-size: 16px;
   font-weight: 600;
-  line-height: 20px;
   margin: 0;
-  outline: none;
   padding: 13px 23px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  touch-action: manipulation;
-  transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
-  user-select: none;
-  -webkit-user-select: none;
-  width: auto;
+  position: absolute;
+  bottom: 10px;
 }
-
-.button-23:focus-visible {
-  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
-  transition: box-shadow .2s;
-}
-
 .button-23:active {
-  background-color: #F7F7F7;
-  border-color: #000000;
-  transform: scale(.96);
-}
-
-.button-23:disabled {
-  border-color: #DDDDDD;
-  color: #DDDDDD;
-  cursor: not-allowed;
-  opacity: 1;
+  background-color: var(--color-dark-s);
 }
 

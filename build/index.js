@@ -1,6 +1,6 @@
 let listOfGood = [];
 
-//Get json for UI
+//UI if index
 async function fetchD() {
     const MaxRetries = 17;
     let retries = 0;
@@ -54,22 +54,22 @@ async function fetchD() {
 }
 
 fetchD();
-//index page
+//List of books from index page
 function interFace(books = listOfGood.products){
     const containerForInterface = document.getElementById('goods');
     containerForInterface.innerHTML = '';
     const wrapBooksForStricture = document.createElement('div');
-    wrapBooksForStricture.classList.add('books-stricture');
+    wrapBooksForStricture.classList.add('books-stricture-list-of-books-index');
     const topDiv = document.createElement('div');
     if(Array.isArray(books)){
         books.forEach((book)=>{
             const divNameOfBook = document.createElement('div');
             divNameOfBook.textContent = `Name: ${book.name}`;
-            divNameOfBook.classList.add('custom-wrap');
+            divNameOfBook.classList.add('custom-wrap-list-of-books-index');
     
             const bookPrice = document.createElement('div');
             bookPrice.textContent = `Price: ${book.price}`;
-            divNameOfBook.classList.add('custom-wrap')
+            divNameOfBook.classList.add('custom-wrap-list-of-books-index')
             wrapBooksForStricture.appendChild(divNameOfBook);
             wrapBooksForStricture.appendChild(bookPrice);
             topDiv.appendChild( wrapBooksForStricture);
@@ -79,10 +79,10 @@ function interFace(books = listOfGood.products){
     }
     containerForInterface.appendChild(topDiv);
 }
-//Categories
+//Categories index page
 function UiForCategories(categories=listOfGood.categories){
     const categoriesUi = document.getElementById('categories');
-    categoriesUi.classList.add('custom-mt');
+    categoriesUi.classList.add('custom-mt-categories');
     const btnHideShow = document.getElementById('btnHideShow');
     categoriesUi.style.display = 'none';
     categoriesUi.innerHTML = '';
@@ -92,12 +92,12 @@ function UiForCategories(categories=listOfGood.categories){
         console.log('button clicked', pi);
             if(categoriesUi.style.display==='none' || categoriesUi.style.display===''){
                 categoriesUi.style.display='block';
-                categoriesUi.classList.remove('hide');
-                categoriesUi.classList.add('show');
+                categoriesUi.classList.remove('hide-categories-index-page');
+                categoriesUi.classList.add('show-categories-index-page');
             }else{
                 categoriesUi.style.display='none';
-                categoriesUi.classList.remove('show');
-                categoriesUi.classList.add('hide');
+                categoriesUi.classList.remove('show-categories-index-page');
+                categoriesUi.classList.add('hide-categories-index-page');
             }
     });
 
@@ -136,7 +136,7 @@ async function findItem(query) {
             container.innerHTML = '';
             filterBooks.forEach((book)=>{
                 const div = document.createElement('div');
-                div.classList.add('custom-mt');
+                div.classList.add('custom-mt-categories');
                 div.textContent = `Name: ${book.name}: Price: ${book.price}`;
                 container.appendChild(div);
             });
@@ -149,10 +149,11 @@ async function findItem(query) {
 }
 
 document.getElementById('Tofind').addEventListener('click', async()=>{
-    const query = document.getElementById('search').value;
+    const query = document.getElementById('search-index-page').value;
     await findItem(query);
 });
 
+//Functionality of index
 //func to find avarage price of book on index page
 function avaragePrice(){
     const getElement = listOfGood.products;
@@ -173,6 +174,7 @@ function avaragePrice(){
         console.log('this is not an array');
     }
 }
+//Modals
 //function the most popular categories of books
 function popular(categories=listOfGood.categories){
     let maxBook = Math.max(...categories.map(category=>category.book_count.book_count));
@@ -214,11 +216,11 @@ function popular(categories=listOfGood.categories){
                 const BooksNames = category.books.map(book=>`<li>${book.title}</li>`).join('');
                 divModal.id = modalId;
                 divModal.innerHTML = `<div>
-                <h2 class='custom-m-auto'>${category.category}</h2>
+                <h2 class='custom-m-auto-modal'>${category.category}</h2>
                 <div>
-                <ul>${BooksNames}</ul>
+                <ul class='custom-font-modal'>${BooksNames}</ul>
                 </div>
-                <div class='custom-flex'>
+                <div class='custom-flex-modal'>
                     <button class='button-23'>Close</button>
                 </div>
                 </div>`;
