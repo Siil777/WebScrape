@@ -131,7 +131,7 @@ async function findItem(query) {
         const getElement = listOfGood.products;
 
 
-        const filterBooks = getElement.filter(book=>book.name.toLowerCase().includes(query.toLowerCase()))
+        const filterBooks = getElement.filter(book=>book.name.toLowerCase().startsWith(query.toLowerCase()))
         if(filterBooks.length > 0){
             container.innerHTML = '';
             filterBooks.forEach((book)=>{
@@ -150,6 +150,10 @@ async function findItem(query) {
 
 document.getElementById('Tofind').addEventListener('click', async()=>{
     const query = document.getElementById('search-index-page').value;
+    if(query===""){
+        alert('enter some good');
+        return;
+    }
     await findItem(query);
 });
 
