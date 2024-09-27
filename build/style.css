@@ -62,6 +62,16 @@
     box-sizing: border-box;
     padding-left: 30px;
   }
+  .custom-block-chart {
+    display: none !important;
+  }
+  .main-container-chart-popular-books {
+    display: none !important;
+  }
+  .position-for-sm-search-and-show-contegory {
+    display: grid;
+    justify-content: center;
+  }
 }
 .custom-wrap-list-of-books-index {
   text-align: left;
