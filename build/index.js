@@ -158,6 +158,8 @@ document.getElementById('Tofind').addEventListener('click', async()=>{
 function avaragePrice(){
     const getElement = listOfGood.products;
     const containerForPrice = document.getElementById('chart');
+    const btnDisplayChartOnSmallScreen = document.getElementById('show-avarage');
+    const diVForSecondModalSmallScreens = document.createElement('div');
     containerForPrice.textContent = 'avarage price for book on index page';
     if(Array.isArray(getElement)){
         const middle = document.createElement('div');
@@ -169,6 +171,31 @@ function avaragePrice(){
         middle.style = '--p:20';
         middle.innerHTML = `<div>${avaragePrice.toFixed(2)}£</div>`;
         containerForPrice.appendChild(middle);
+        const btn = document.createElement('button');
+        btn.classList.add('button-4');
+        btn.textContent = 'Show avarage price of book';
+        btn.addEventListener('click', (event)=>{
+            const di = event.target;
+            console.log('btn clicked', di);
+            const pie = document.createElement('div');
+            pie.classList.add('custom-poition-pie','pie');
+            //btnDisplayChartOnSmallScreen.innerHTML = '';
+            const m = document.createElement('div');
+            m.classList.add('modal-ms');
+            //m.style = '--p:20';
+            m.innerHTML = `<div class='custom-position-price'>${avaragePrice.toFixed(2)}£</div><div class='custom-flex-modal'>
+            <button class='button-23'>Close</button>
+            </div>`;
+            m.appendChild(pie);
+            diVForSecondModalSmallScreens.appendChild(m);
+
+            const btnClose =m.querySelector('.button-23');
+            btnClose.addEventListener('click', ()=>{
+                m.remove();
+            })
+        });
+        btnDisplayChartOnSmallScreen.appendChild(diVForSecondModalSmallScreens);
+        btnDisplayChartOnSmallScreen.appendChild(btn);
         console.log('avarage price for book on index page is:', avaragePrice.toFixed(2));
     }else{
         console.log('this is not an array');
