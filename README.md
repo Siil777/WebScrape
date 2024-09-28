@@ -10,11 +10,11 @@ n## Install
 
 3. page with json format respons:
    ```bash
-   :green_circle: [Run API](http://localhost:3000/api.php)
+   [Link Text](http://localhost:3000/api.php)
 
 4. page interface built based on json data:
    ```bash
-   :green_circle: [Run API](http://localhost:777/index.html)
+   [Run API](http://localhost:777/index.html)
 
 <mark>!important it is better to use php version 8.0.30 with node 21</mark>
 
