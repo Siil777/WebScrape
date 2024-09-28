@@ -41,7 +41,7 @@ async function fetchD() {
             console.log(`Retrying fetch... (${retries})`);
             const fetching = document.getElementById('fetc-container');
             fetching.innerHTML = '';
-            fetching.textContent = `Retrying fetch... (${retries})`;
+            fetching.textContent = `fetch of andmed... (${retries})`;
 
             if (retries >= MaxRetries) {
                 console.error('Max retries reached. Failed to fetch data.');
@@ -220,7 +220,34 @@ function popular(categories=listOfGood.categories){
     categories.forEach((cat)=>{
         console.log(`BOOKS IN CATEGORY ${cat.books}`);
     });
-    const containerForChartPopulatBooks = document.getElementById('char-categories');
+    let containerForChartPopulatBooks = document.getElementById('char-categories');
+    if(window.screen.width < 755) {
+        containerForChartPopulatBooks.style.display = 'none';
+    }
+    containerForChartPopulatBooks.classList.add('container');
+    let switcher = document.getElementById('slider');
+    switcher.innerHTML = '';
+    switcher.addEventListener('click', (event)=>{
+        const di = event.target;
+        console.log('has been switched!');
+        if(containerForChartPopulatBooks.classList.contains('container')){
+            containerForChartPopulatBooks.classList.add('show');
+            containerForChartPopulatBooks.classList.remove('hide');
+        }else{
+            containerForChartPopulatBooks.classList.remove('show');
+            containerForChartPopulatBooks.classList.add('hide');
+        }
+    });
+    const labelSwitch = document.createElement('label');
+    labelSwitch.classList.add('switch');
+    const inputSwitch = document.createElement('input');
+    inputSwitch.type = 'checkbox';
+    const spanSwitch = document.createElement('span');
+    spanSwitch.classList.add('slider');
+    labelSwitch.appendChild(inputSwitch);
+    labelSwitch.appendChild(spanSwitch);
+    switcher.appendChild(labelSwitch);
+
     const modals = document.getElementById('Modals');
     //modals.innerHTML = '';
     containerForChartPopulatBooks.classList.add('year-stats');
@@ -260,7 +287,6 @@ function popular(categories=listOfGood.categories){
                     <button class='button-23'>Close</button>
                 </div>
                 </div>`;
-            //divModal.appendChild(imgDiv);
             modals.appendChild(divModal);
             const closeButton = divModal.querySelector('.button-23');
             closeButton.addEventListener('click', () => {
