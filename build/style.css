@@ -18,32 +18,6 @@
   --info: rgba(241, 205, 179, 1);
   --additional-info: rgba(255, 255, 255, 1);
 }
-/* .custom-container {
-  width: 1200px;
-  max-width: 100%;
-}
-
-.wrapper {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 0 20px;
-}
-
-.wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; 
-  display: flex;
-  justify-content: center;
-  background: var(--color-dark-3xl);
-  background-size: cover;
-  z-index: -1;
-} */
 /*List of books index*/
 .books-stricture-list-of-books-index {
     display: flex;
@@ -71,10 +45,16 @@
 .switch {
   display: none !important;
 }
+.custom-block-sm {
+  display: none;
+}
 @media screen and (max-width: 775px){
   .ms-poisiton-modal {
     display: flex;
     justify-content: center;
+  }
+  .custom-ps-search h5 {
+    display: none;
   }
   .custom-block-sm{
     display: block;

@@ -1,4 +1,7 @@
-n## Install
+## Install
+
+# o((⊙﹏⊙))o
+
 
 1. Run to setup all extensions need:
    ```bash

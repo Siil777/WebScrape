@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0bc52d-f16c-43c2-a03f-b6fa19c364e3" name="Changes" comment="" />
+    <list default="true" id="712dbd43-c0da-4237-b497-25a42bf2054b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,9 +15,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe" />
   <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
+  "associatedIndex": 0
 }]]></component>
-  <component name="ProjectId" id="2mhvI87ShjXAmgO8eSTQQ2yZG2K" />
+  <component name="ProjectId" id="2mi0f2hywmn7eIm9S5x2og3syM7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -29,11 +26,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "gh-pages",
-    "last_opened_file_path": "C:/Users/ocass/Desktop/ice/crawl",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
+    "last_opened_file_path": "C:/Users/ocass/Desktop/Project/crawl",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -49,12 +42,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8b0bc52d-f16c-43c2-a03f-b6fa19c364e3" name="Changes" comment="" />
-      <created>1727541540040</created>
+      <changelist id="712dbd43-c0da-4237-b497-25a42bf2054b" name="Changes" comment="" />
+      <created>1727544188809</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1727541540040</updated>
-      <workItem from="1727541541084" duration="542000" />
+      <updated>1727544188809</updated>
+      <workItem from="1727544189842" duration="191000" />
     </task>
     <servers />
   </component>
