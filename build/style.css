@@ -65,6 +65,9 @@
   justify-content: flex-end;
   margin: 0 20px 30px 0 ;
 }
+.custom-block {
+  display: block;
+}
 .switch {
   display: none !important;
 }
@@ -73,9 +76,12 @@
     display: flex;
     justify-content: center;
   }
+  .custom-block-sm{
+    display: block;
+  }
   .modal {
-    height: 695px !important;
-    width: 400px !important;
+    height: 895px !important;
+    width: 100vw !important;
     background-color: var(--color-dark-l);
     position: absolute !important;
     left: -1px !important;
@@ -101,6 +107,7 @@
     position: absolute;
     margin-top: 270px;
     left: 30px;
+    padding-top: 40px;
    }
    .visibility {
     display: none;
@@ -162,6 +169,7 @@
     background-color: var(--color-dark-l);
     z-index: 999;
     position: absolute;
+    margin-left: 50px;
 }
 }
 .custom-wrap-list-of-books-index {
@@ -207,7 +215,7 @@
 }
 /*Modals*/
 .modal {
-    height: 695px;
+    height: 745px;
     width: 500px;
     background-color: var(--color-dark-l);
     position: absolute;
