@@ -9,6 +9,7 @@
   --color-dark-s: #CDCDCD;
   --color-dark-xl: #4C4C4C;
   --color-dark-l: rgb(	84, 84, 84, 0.9);
+  --color-light-xl-rgb: rgb(	255, 255, 255, 0.9);
   --color-dark-3xl: #292929;
   --color-dark-m: #B2B2B2;
   --color-light-s:#FAFAFA; 
@@ -64,16 +65,31 @@
   justify-content: flex-end;
   margin: 0 20px 30px 0 ;
 }
-#char-categories {
-  display: block; 
+.switch {
+  display: none !important;
 }
 @media screen and (max-width: 775px){
-   .hide {
+  .ms-poisiton-modal {
+    display: flex;
+    justify-content: center;
+  }
+  .modal {
+    height: 695px !important;
+    width: 400px !important;
+    background-color: var(--color-dark-l);
+    position: absolute !important;
+    left: -1px !important;
+}
+  #char-categories {
     display: none;
   }
-  .show {
-    display: flex;
-  } 
+  .switch {
+    display: inline-block !important;
+  }
+  .categories {
+    z-index: 999;
+    background-color: var(--color-light-xl-rgb);
+  }
   .books-stricture-list-of-books-index div {
     flex: 0 0 35%;
     padding-left: 0;
@@ -84,6 +100,7 @@
    .main-container-chart-popular-books {
     position: absolute;
     margin-top: 270px;
+    left: 30px;
    }
    .visibility {
     display: none;
@@ -134,7 +151,9 @@
     display: none;
   }
   .switch-custom-position-and-none {
+    position: absolute;
     display: flex !important;
+    left: 0;
   
   }
   .modal-ms {

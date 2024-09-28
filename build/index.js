@@ -89,7 +89,7 @@ function UiForCategories(categories=listOfGood.categories){
     //hide show btn
     btnHideShow.addEventListener('click', (event)=>{
         const pi = event.target;
-        console.log('button clicked', pi);
+        console.log('button clicked');
             if(categoriesUi.style.display==='none' || categoriesUi.style.display===''){
                 categoriesUi.style.display='block';
                 categoriesUi.classList.remove('hide-categories-index-page');
@@ -221,24 +221,38 @@ function popular(categories=listOfGood.categories){
         console.log(`BOOKS IN CATEGORY ${cat.books}`);
     });
     let containerForChartPopulatBooks = document.getElementById('char-categories');
-    if(window.screen.width < 755) {
-        containerForChartPopulatBooks.style.display = 'none';
-    }
     containerForChartPopulatBooks.classList.add('container');
-    let switcher = document.getElementById('slider');
-    switcher.innerHTML = '';
-    switcher.addEventListener('click', (event)=>{
+    //let switcher = document.getElementById('slider');
+    const btnBtn = document.getElementById('btnHideShowTwo');
+/*     function updateStyle(){
+        if(window.screen.width < 755) {
+            containerForChartPopulatBooks.style.display = 'none';
+        }else{
+            containerForChartPopulatBooks.style.display = 'block';
+        }
+    }
+    function debounce(wait,func){
+        let timeout;
+        return function(...args){
+            clearTimeout(timeout);
+            timeout = setTimeout(()=> func.apply(this,args),wait);
+        }
+    }
+    window.addEventListener('resize', debounce(100, updateStyle)); */
+    btnBtn.addEventListener('click', (event)=>{
         const di = event.target;
         console.log('has been switched!');
-        if(containerForChartPopulatBooks.classList.contains('container')){
-            containerForChartPopulatBooks.classList.add('show');
-            containerForChartPopulatBooks.classList.remove('hide');
+        if(containerForChartPopulatBooks.style.display === 'none' || containerForChartPopulatBooks.style.display === ''){
+            containerForChartPopulatBooks.style.display ='block'
+            containerForChartPopulatBooks.classList.remove('hide-categories-index-page');
+            containerForChartPopulatBooks.classList.add('show-categories-index-page');
         }else{
-            containerForChartPopulatBooks.classList.remove('show');
-            containerForChartPopulatBooks.classList.add('hide');
+            containerForChartPopulatBooks.style.display ='none'
+            containerForChartPopulatBooks.classList.remove('show-categories-index-page');
+            containerForChartPopulatBooks.classList.add('hide-categories-index-page');
         }
     });
-    const labelSwitch = document.createElement('label');
+/*     const labelSwitch = document.createElement('label');
     labelSwitch.classList.add('switch');
     const inputSwitch = document.createElement('input');
     inputSwitch.type = 'checkbox';
@@ -246,9 +260,10 @@ function popular(categories=listOfGood.categories){
     spanSwitch.classList.add('slider');
     labelSwitch.appendChild(inputSwitch);
     labelSwitch.appendChild(spanSwitch);
-    switcher.appendChild(labelSwitch);
+    switcher.appendChild(labelSwitch); */
 
     const modals = document.getElementById('Modals');
+    modals.classList.add('ms-poisiton-modal');
     //modals.innerHTML = '';
     containerForChartPopulatBooks.classList.add('year-stats');
     mostPopularCategories.forEach((category,index)=>{
