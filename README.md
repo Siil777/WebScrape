@@ -8,12 +8,12 @@ n## Install
    ```bash
    npm run start
 
-3. page with json format respons:
-   ```bash
+3. Click to run api:
+   
    [Run Api](http://localhost:3000/api.php)
 
-4. page interface built based on json data:
-   ```bash
+4. Click to run interface:
+
    [Run Interface](http://localhost:777/index.html)
 
 <mark>!important it is better to use php version 8.0.30 with node 21</mark>
