@@ -1,0 +1,465 @@
+/*my styles*/
+:root {
+  /*options*/
+  --color-primary: #F1CDB3;
+  --color-light-xl: #FFFFFF;
+  --color-light-l: #F6F6F6;
+  --color-primary-light: #FDDCC4;
+
+  --color-dark-s: #CDCDCD;
+  --color-dark-xl: #4C4C4C;
+  --color-dark-l: rgb(	84, 84, 84, 0.9);
+  --color-light-xl-rgb: rgb(	255, 255, 255, 0.9);
+  --color-dark-3xl: #292929;
+  --color-dark-m: #B2B2B2;
+  --color-light-s:#FAFAFA; 
+
+  --gradient-background: radial-gradient(237.5% 111.8% at 0% 0%, rgb(91, 72, 58) 0%, rgb(38, 36, 37) 100%), #211f20;
+  --info: rgba(241, 205, 179, 1);
+  --additional-info: rgba(255, 255, 255, 1);
+}
+/* .custom-container {
+  width: 1200px;
+  max-width: 100%;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+  display: flex;
+  justify-content: center;
+  background: var(--color-dark-3xl);
+  background-size: cover;
+  z-index: -1;
+} */
+/*List of books index*/
+.books-stricture-list-of-books-index {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+}
+.books-stricture-list-of-books-index div {
+  flex: 0 0 25%;
+  box-sizing: border-box;
+  padding-left: 30px;
+}
+.custom-btn-do-notdisplay-large {
+  display: none;
+}
+.custom-style-h2 {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 20px 30px 0 ;
+}
+.custom-block {
+  display: block;
+}
+.switch {
+  display: none !important;
+}
+@media screen and (max-width: 775px){
+  .ms-poisiton-modal {
+    display: flex;
+    justify-content: center;
+  }
+  .custom-block-sm{
+    display: block;
+  }
+  .modal {
+    height: 895px !important;
+    width: 100vw !important;
+    background-color: var(--color-dark-l);
+    position: absolute !important;
+    left: -1px !important;
+}
+  #char-categories {
+    display: none;
+  }
+  .switch {
+    display: inline-block !important;
+  }
+  .categories {
+    z-index: 999;
+    background-color: var(--color-light-xl-rgb);
+  }
+  .books-stricture-list-of-books-index div {
+    flex: 0 0 35%;
+    padding-left: 0;
+  }
+  .custom-block-chart {
+    display: none !important;
+  }
+   .main-container-chart-popular-books {
+    position: absolute;
+    margin-top: 270px;
+    left: 30px;
+    padding-top: 40px;
+   }
+   .visibility {
+    display: none;
+   }
+  .wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; 
+  }
+  .position-for-sm-search-and-show-contegory {
+    margin: 0 30px 0 0;
+  }
+  .show-categories-index-page {
+    font-size: 12px;
+  }
+  .books-stricture-list-of-books-index {
+    font-size: 12px;
+  }
+  .custom-btn-do-notdisplay-large {
+    display: flex;
+  }
+  .custom-d-flex-small-screen {
+    display: flex;
+    gap: 10px;
+  }
+  .button-4 {
+    font-size: 10px !important;
+  }
+  .custom-position-price {
+    position: absolute;
+    margin: 50px 0 0 130px;
+    color: var(--color-light-xl);
+  }
+  .custom-poition-pie{
+    margin-left: 90px !important;
+  }
+  .set-for-sm-modal {
+    display: flex;
+    justify-content: center;
+  }
+  .custom-class-for-modal-text {
+    position: absolute;
+    margin: 70px 0 0 30px;
+    color: var(--info);
+  }
+  .custom-style-h2 {
+    display: none;
+  }
+  .switch-custom-position-and-none {
+    position: absolute;
+    display: flex !important;
+    left: 0;
+  
+  }
+  .modal-ms {
+    height: 225px;
+    width: 300px;
+    background-color: var(--color-dark-l);
+    z-index: 999;
+    position: absolute;
+    margin-left: 50px;
+}
+}
+.custom-wrap-list-of-books-index {
+  text-align: left;
+  padding: 0;
+}
+/*Search index page*/
+.search-index-page {
+    margin-top: 60px;
+}
+.custom-ps-search {
+  padding: 0 0 0 30px;
+}
+/*Categories index page*/
+.custom-mt-categories {
+  margin-top: 10px;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.hide-categories-index-page {
+  display: none;
+}
+.show-categories-index-page {
+  display: block;
+}
+.categories {
+  position: absolute;
+}
+/*Chart*/
+.custom-block-chart {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0 0;
+}
+.main-container-chart-popular-books {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 100px;
+}
+/*Modals*/
+.modal {
+    height: 745px;
+    width: 500px;
+    background-color: var(--color-dark-l);
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transition: translate(-50%, -20%);
+
+}
+.custom-font-modal {
+  font-size: 17px;
+}
+.custom-m-auto-modal {
+  position: relative;
+  left: 7%;
+}
+.custom-flex-modal {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5%;
+}
+/*Source of charts https://www.sliderrevolution.com/resources/css-charts/*/
+@property --p{
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+  }
+  .pie {
+    --p:20;
+    --b:22px;
+    --c:darkred;
+    --w:150px;
+    
+    width:var(--w);
+    aspect-ratio:1;
+    position:relative;
+    display:inline-grid;
+    margin:5px;
+    place-content:center;
+    font-size:25px;
+    font-weight:bold;
+    font-family:sans-serif;
+  }
+  .pie:before,
+  .pie:after {
+    content:"";
+    position:absolute;
+    border-radius:50%;
+  }
+  .pie:before {
+    inset:0;
+    background:
+      radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
+      conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+    -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+            mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+  }
+  .pie:after {
+    inset:calc(50% - var(--b)/2);
+    background:var(--c);
+    transform:rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
+  }
+  .animate {
+    animation:p 1s .5s both;
+  }
+  .no-round:before {
+    background-size:0 0,auto;
+  }
+  .no-round:after {
+    content:none;
+  }
+  @keyframes p {
+    from{--p:0}
+  }
+  /*css for chart source: https://codepen.io/jorgemoovein-the-bashful/pen/yLeLELw*/
+/* SCROLL BAR STYLE (ONLY WORKS IN CHROME) */
+
+.month-group {
+	cursor: pointer;
+	max-width: 400px;
+	height: 110px;
+    display: flex;
+    transform: rotate(90deg);
+
+}
+.item:hover{
+    transform: scale(1.1);
+}
+.bar {
+	background-color: var( --color-dark-m);
+	width: 20px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+.h-25 {
+	height: 25%;
+}
+.h-50 {
+	height: 50%;
+}
+.h-75 {
+	height: 75%;
+}
+.h-100 {
+	height: 100%;
+}
+
+.stats-info {
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	position: relative;
+}
+
+.graph-container {
+	position: relative;
+}
+
+.percent {
+	display: block;
+	width: 120px;
+	height: 120px;
+}
+
+.graph-container p {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 12px;
+	text-align: center;
+}
+
+.month {
+    transform: rotate(260deg);
+    margin: 0;
+}
+/* CSS source for btn https://getcssscan.com/css-buttons-examples*/
+.button-4 {
+  margin-top: 10px;
+  appearance: none;
+  background-color: var(--color-light-xl);
+  border: 1px solid var(--color-dark-3xl);
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: var(--color-dark-3xl);
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+}
+.button-4:hover {
+  background-color: var(--color-dark-m);
+  transition: background-color 3s ease;
+}
+/* CSS */
+.button-23 {
+  background-color: var(--color-light-xl);
+  border: 1px solid var(--color-dark-xl);
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: var( --color-dark-3xl);
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  padding: 13px 23px;
+  position: absolute;
+  bottom: 10px;
+}
+.button-23:active {
+  background-color: var(--color-dark-s);
+}
+
+/*Swither css srource: https://www.w3schools.com/howto/howto_css_switch.asp*/
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.switch-custom-position-and-none {
+  margin: 30px 0 0 30px;
+}
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
