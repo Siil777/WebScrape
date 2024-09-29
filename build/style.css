@@ -20,17 +20,11 @@
 }
 /*List of books index*/
 html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-}
-footer {
-  position: relative;
-  width: 100%;
-  padding: 10px 0;
-  display: flex;
-  justify-content: center;
 }
 .wrapp {
   max-width: 1200px;
@@ -39,11 +33,24 @@ footer {
   padding: 15px 40px 2px 40px;
 }
 .center-container {
+  position: relative;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-
+footer {
+  position: absolute;
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
 .books-stricture-list-of-books-index {
     display: flex;
     flex-wrap: wrap;
@@ -67,6 +74,11 @@ footer {
 .custom-block-sm {
   display: none;
 }
+.ms-poisiton-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media screen and (max-width: 775px){
   .wrapp {
     padding: 0 !important;
@@ -80,6 +92,7 @@ footer {
   }
   .custom-block-sm{
     display: block;
+    padding-bottom: 70px;
   }
   .modal {
     height: 895px !important;
@@ -229,8 +242,7 @@ footer {
     width: 500px;
     background-color: var(--color-dark-l);
     position: absolute;
-    top: 50%;
-    left: 30%;
+    top: 13%;
     transition: translate(-50%, -20%);
 
 }
@@ -307,11 +319,6 @@ footer {
 	height: 110px;
   display: flex;
 }
-p.month {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
 .container {
   overflow: hidden;
 } 
