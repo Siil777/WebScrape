@@ -283,6 +283,7 @@ function popular(categories=listOfGood.categories){
             if(excistingModal){
                 modals.removeChild(excistingModal);
             }
+            modals.innerHTML = '';
             const divModal = document.createElement('div');
             divModal.classList.add('modal');
 /*             const imgDiv = document.createElement('img');

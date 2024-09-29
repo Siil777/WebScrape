@@ -19,6 +19,38 @@
   --additional-info: rgba(255, 255, 255, 1);
 }
 /*List of books index*/
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.wrapp {
+  max-width: 1200px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 15px 40px 2px 40px;
+}
+.center-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+footer {
+  position: absolute;
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
 .books-stricture-list-of-books-index {
     display: flex;
     flex-wrap: wrap;
@@ -29,15 +61,9 @@
 .books-stricture-list-of-books-index div {
   flex: 0 0 25%;
   box-sizing: border-box;
-  padding-left: 30px;
 }
 .custom-btn-do-notdisplay-large {
   display: none;
-}
-.custom-style-h2 {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0 20px 30px 0 ;
 }
 .custom-block {
   display: block;
@@ -48,7 +74,15 @@
 .custom-block-sm {
   display: none;
 }
+.ms-poisiton-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media screen and (max-width: 775px){
+  .wrapp {
+    padding: 0 !important;
+  }
   .ms-poisiton-modal {
     display: flex;
     justify-content: center;
@@ -58,6 +92,7 @@
   }
   .custom-block-sm{
     display: block;
+    padding-bottom: 70px;
   }
   .modal {
     height: 895px !important;
@@ -76,6 +111,9 @@
     z-index: 999;
     background-color: var(--color-light-xl-rgb);
   }
+  .month-group {
+    transform: rotate(90deg) translate(0px, 0) !important;
+}
   .books-stricture-list-of-books-index div {
     flex: 0 0 35%;
     padding-left: 0;
@@ -84,10 +122,10 @@
     display: none !important;
   }
    .main-container-chart-popular-books {
-    position: absolute;
-    margin-top: 270px;
     left: 30px;
-    padding-top: 40px;
+   }
+   .custom-flex-for-main-content {
+    display: block !important;
    }
    .visibility {
     display: none;
@@ -98,8 +136,9 @@
     justify-content: space-around;
     align-items: flex-start; 
   }
-  .position-for-sm-search-and-show-contegory {
-    margin: 0 30px 0 0;
+  .custom-flex-for-main-content {
+    display: grid !important;
+    justify-content: center !important;
   }
   .show-categories-index-page {
     font-size: 12px;
@@ -125,6 +164,9 @@
   .custom-poition-pie{
     margin-left: 90px !important;
   }
+  .search-index-page {
+    margin-top: 15px !important;
+  }
   .set-for-sm-modal {
     display: flex;
     justify-content: center;
@@ -138,7 +180,6 @@
     display: none;
   }
   .switch-custom-position-and-none {
-    position: absolute;
     display: flex !important;
     left: 0;
   
@@ -160,9 +201,6 @@
 .search-index-page {
     margin-top: 60px;
 }
-.custom-ps-search {
-  padding: 0 0 0 30px;
-}
 /*Categories index page*/
 .custom-mt-categories {
   margin-top: 10px;
@@ -179,28 +217,32 @@
 .show-categories-index-page {
   display: block;
 }
-.categories {
+/* .categories {
   position: absolute;
-}
+} */
+ .custom-d-flex-cat-cat {
+  display: flex;
+ }
 /*Chart*/
 .custom-block-chart {
     display: flex;
     justify-content: center;
     margin: 50px 0 0 0;
 }
-.main-container-chart-popular-books {
+ .custom-flex-for-main-content {
   display: flex;
-  justify-content: flex-end;
-  padding-right: 100px;
-}
+  justify-content: space-between;
+ }
+ .custom-block-for-inscription-and-popular-cat {
+  display: block;
+ }
 /*Modals*/
 .modal {
-    height: 745px;
+    height: 830px;
     width: 500px;
     background-color: var(--color-dark-l);
     position: absolute;
-    top: 50%;
-    left: 30%;
+    top: 13%;
     transition: translate(-50%, -20%);
 
 }
@@ -274,11 +316,14 @@
 
 .month-group {
 	cursor: pointer;
-	max-width: 400px;
 	height: 110px;
-    display: flex;
-    transform: rotate(90deg);
-
+  display: flex;
+}
+.container {
+  overflow: hidden;
+} 
+.month-group {
+    transform: rotate(90deg) translate(200px, 0);
 }
 .item:hover{
     transform: scale(1.1);
