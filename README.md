@@ -21,3 +21,9 @@
 
 <mark>!important it is better to use php version 8.0.30 with node 21</mark>
 
+<mark>!If you do not have node 21</mark>
+
+5. Run:
+   ```bash
+   nvm install 21
+
