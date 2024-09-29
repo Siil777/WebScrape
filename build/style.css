@@ -28,12 +28,20 @@ html, body {
 }
 footer {
   position: relative;
-  bottom: 0;
-  left: 0;
   width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+footer::before {
+  content: "";
+  position: absolute;
+  width: 100vw;
+  height: 100%;
   text-align: center;
   background-color: #f1f1f1;
   padding: 10px 0;
+  z-index: -1;
 }
 .wrapp {
   max-width: 1200px;
@@ -61,11 +69,6 @@ footer {
 .custom-btn-do-notdisplay-large {
   display: none;
 }
-/* .custom-style-h2 {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0 20px 30px 0 ;
-} */
 .custom-block {
   display: block;
 }
@@ -153,7 +156,7 @@ footer {
     margin-left: 90px !important;
   }
   .month-group {
-    transform: rotate(90deg) translate(330px, 265px) !important;
+    transform: rotate(90deg) translate(260px, 200px) !important;
   }
   .switch-custom-position-and-none {
     margin: 30px 0 20px 0 !important;
