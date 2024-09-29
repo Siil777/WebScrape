@@ -22,7 +22,6 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -32,16 +31,6 @@ footer {
   padding: 10px 0;
   display: flex;
   justify-content: center;
-}
-footer::before {
-  content: "";
-  position: absolute;
-  width: 100vw;
-  height: 100%;
-  text-align: center;
-  background-color: #f1f1f1;
-  padding: 10px 0;
-  z-index: -1;
 }
 .wrapp {
   max-width: 1200px;
@@ -79,6 +68,9 @@ footer::before {
   display: none;
 }
 @media screen and (max-width: 775px){
+  .wrapp {
+    padding: 0 !important;
+  }
   .ms-poisiton-modal {
     display: flex;
     justify-content: center;
@@ -106,6 +98,9 @@ footer::before {
     z-index: 999;
     background-color: var(--color-light-xl-rgb);
   }
+  .month-group {
+    transform: rotate(90deg) translate(0px, 0) !important;
+}
   .books-stricture-list-of-books-index div {
     flex: 0 0 35%;
     padding-left: 0;
@@ -128,8 +123,9 @@ footer::before {
     justify-content: space-around;
     align-items: flex-start; 
   }
-  .position-for-sm-search-and-show-contegory {
-    margin: 0 30px 0 0;
+  .custom-flex-for-main-content {
+    display: grid !important;
+    justify-content: center !important;
   }
   .show-categories-index-page {
     font-size: 12px;
@@ -155,11 +151,8 @@ footer::before {
   .custom-poition-pie{
     margin-left: 90px !important;
   }
-  .month-group {
-    transform: rotate(90deg) translate(260px, 200px) !important;
-  }
-  .switch-custom-position-and-none {
-    margin: 30px 0 20px 0 !important;
+  .search-index-page {
+    margin-top: 15px !important;
   }
   .set-for-sm-modal {
     display: flex;
@@ -314,9 +307,14 @@ footer::before {
 	height: 110px;
   display: flex;
 }
+p.month {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .container {
   overflow: hidden;
-}
+} 
 .month-group {
     transform: rotate(90deg) translate(200px, 0);
 }
