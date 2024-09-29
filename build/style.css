@@ -111,10 +111,10 @@ footer {
     display: none !important;
   }
    .main-container-chart-popular-books {
-    position: absolute;
-    margin-top: 270px;
     left: 30px;
-    padding-top: 40px;
+   }
+   .custom-flex-for-main-content {
+    display: block !important;
    }
    .visibility {
     display: none;
@@ -152,6 +152,12 @@ footer {
   .custom-poition-pie{
     margin-left: 90px !important;
   }
+  .month-group {
+    transform: rotate(90deg) translate(330px, 265px) !important;
+  }
+  .switch-custom-position-and-none {
+    margin: 30px 0 20px 0 !important;
+  }
   .set-for-sm-modal {
     display: flex;
     justify-content: center;
@@ -165,7 +171,6 @@ footer {
     display: none;
   }
   .switch-custom-position-and-none {
-    position: absolute;
     display: flex !important;
     left: 0;
   
