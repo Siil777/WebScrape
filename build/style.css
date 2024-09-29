@@ -19,6 +19,34 @@
   --additional-info: rgba(255, 255, 255, 1);
 }
 /*List of books index*/
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #f1f1f1;
+  padding: 10px 0;
+}
+.wrapp {
+  max-width: 1200px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 15px 40px 2px 40px;
+}
+.center-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .books-stricture-list-of-books-index {
     display: flex;
     flex-wrap: wrap;
@@ -29,16 +57,15 @@
 .books-stricture-list-of-books-index div {
   flex: 0 0 25%;
   box-sizing: border-box;
-  padding-left: 30px;
 }
 .custom-btn-do-notdisplay-large {
   display: none;
 }
-.custom-style-h2 {
+/* .custom-style-h2 {
   display: flex;
   justify-content: flex-end;
   margin: 0 20px 30px 0 ;
-}
+} */
 .custom-block {
   display: block;
 }
@@ -160,9 +187,6 @@
 .search-index-page {
     margin-top: 60px;
 }
-.custom-ps-search {
-  padding: 0 0 0 30px;
-}
 /*Categories index page*/
 .custom-mt-categories {
   margin-top: 10px;
@@ -179,23 +203,28 @@
 .show-categories-index-page {
   display: block;
 }
-.categories {
+/* .categories {
   position: absolute;
-}
+} */
+ .custom-d-flex-cat-cat {
+  display: flex;
+ }
 /*Chart*/
 .custom-block-chart {
     display: flex;
     justify-content: center;
     margin: 50px 0 0 0;
 }
-.main-container-chart-popular-books {
+ .custom-flex-for-main-content {
   display: flex;
-  justify-content: flex-end;
-  padding-right: 100px;
-}
+  justify-content: space-between;
+ }
+ .custom-block-for-inscription-and-popular-cat {
+  display: block;
+ }
 /*Modals*/
 .modal {
-    height: 745px;
+    height: 830px;
     width: 500px;
     background-color: var(--color-dark-l);
     position: absolute;
@@ -274,11 +303,14 @@
 
 .month-group {
 	cursor: pointer;
-	max-width: 400px;
 	height: 110px;
-    display: flex;
-    transform: rotate(90deg);
-
+  display: flex;
+}
+.container {
+  overflow: hidden;
+}
+.month-group {
+    transform: rotate(90deg) translate(200px, 0);
 }
 .item:hover{
     transform: scale(1.1);
