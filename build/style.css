@@ -80,6 +80,10 @@ footer {
   align-items: center;
 }
 @media screen and (max-width: 775px){
+  .c-d-f-sm {
+    display: flex;
+    gap: 30px;
+  }
   .wrapp {
     padding: 0 !important;
   }
@@ -173,8 +177,13 @@ footer {
   }
   .custom-class-for-modal-text {
     position: absolute;
-    margin: 70px 0 0 30px;
+    margin: 90px 0 0 30px;
     color: var(--info);
+    display: grid;
+    width: 200px;
+  }
+  .custom-class-for-modal-text h5 {
+    display: grid;
   }
   .custom-style-h2 {
     display: none;
